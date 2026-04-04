@@ -1,0 +1,96 @@
+:root {
+  --gold: #d4af37;
+  --dark: #0b0b0b;
+  --gray: #1a1a1a;
+  --text: #b0b0b0;
+}
+
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: 'Georgia', serif; background: var(--dark); color: var(--text); }
+
+/* NAVIGATION */
+header { position: fixed; top: 0; width: 100%; background: rgba(11,11,11,0.98); z-index: 1000; border-bottom: 1px solid rgba(212,175,55,0.2); text-align: center; }
+.site-title { color: #ffb84d; font-size: 1.4rem; letter-spacing: 4px; text-transform: uppercase; padding-top: 10px; margin: 0; }
+.subtitle { color: var(--gold); font-size: 0.7rem; text-transform: uppercase; margin-bottom: 5px; }
+.main-nav { display: flex; justify-content: center; gap: 20px; padding: 10px 0; }
+.main-nav a { color: white; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; }
+.cta-nav { border: 1px solid var(--gold); padding: 2px 10px; border-radius: 20px; }
+
+/* BOUTONS FLOTTANTS */
+.back-home-btn { position: fixed; top: 130px; left: 20px; z-index: 1001; color: var(--gold); border: 1px solid var(--gold); padding: 8px 15px; text-decoration: none; border-radius: 20px; background: rgba(0,0,0,0.6); }
+#backToTop { position: fixed; bottom: 25px; right: 25px; background: var(--gold); border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: none; z-index: 1000; }
+
+/* GRILLE & IMAGES */
+section { padding: 180px 10% 60px; text-align: center; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+.gallery-item {
+  height: 400px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  position: relative;
+  background: #000;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+/* AVANT / APRÈS LOGIQUE */
+.hover-reveal img { position: absolute; top: 0; left: 0; transition: opacity 0.5s ease; }
+.img-top { z-index: 2; opacity: 1; }
+.img-back { z-index: 1; }
+.hover-reveal:hover .img-top { opacity: 0; }
+
+.overlay {
+  position: absolute; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;
+  z-index: 3; opacity: 0; transition: 0.3s; pointer-events: none;
+}
+.gallery-item:hover .overlay { opacity: 1; }
+.overlay span { color: var(--gold); border: 1px solid var(--gold); padding: 8px 15px; background: rgba(0,0,0,0.6); }
+
+/* SLIDER ÉTAPES */
+.bg-darker { background-color: #050505; }
+.project-steps { max-width: 800px; margin: auto; border: 1px solid #222; }
+.multi-step-slider { overflow: hidden; position: relative; }
+.step-slides { display: flex; transition: transform 0.6s ease; }
+.step-card { min-width: 100%; }
+.step-card img { width: 100%; height: 450px; object-fit: contain; background: #000; cursor: zoom-in; }
+.step-card p { padding: 15px; background: var(--gray); margin: 0; text-align: left; }
+.slider-controls { display: flex; justify-content: space-between; padding: 10px; background: var(--dark); }
+.slider-controls button { background: none; border: 1px solid var(--gold); color: var(--gold); cursor: pointer; padding: 5px 15px; }
+
+/* LIGHTBOX (MODAL) */
+.modal { display: none; position: fixed; z-index: 2000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); }
+.modal-content { margin: auto; display: block; max-width: 90%; max-height: 80vh; object-fit: contain; border: 1px solid var(--gold); }
+.close { position: absolute; top: 20px; right: 35px; color: var(--gold); font-size: 40px; cursor: pointer; z-index: 2011; }
+#caption { text-align: center; color: var(--gold); padding: 10px; font-style: italic; }
+
+/* NOUVEAUX STYLES FLÈCHES MODAL */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  font-size: 30px;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 2010;
+  transition: 0.3s;
+}
+.nav-btn:hover { background: var(--gold); color: #000; }
+.prev { left: 20px; }
+.next { right: 20px; }
+
+footer { padding: 40px; opacity: 0.5; font-size: 0.8rem; text-align: center; }
+@media (max-width: 768px) { 
+  .back-home-btn { display: none; } 
+  section { padding-top: 150px; } 
+  .nav-btn { font-size: 20px; padding: 5px 10px; }
+}
